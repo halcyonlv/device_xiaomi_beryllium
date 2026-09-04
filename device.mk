@@ -20,11 +20,12 @@ PRODUCT_PACKAGES += \
     FM2
 
 # Overlays
-DEVICE_PACKAGE_OVERLAYS += \
-    $(LOCAL_PATH)/overlay
-
 PRODUCT_PACKAGES += \
-    NoCutoutOverlay
+    ApertureBerylliumOverlay \
+    FrameworksResBerylliumOverlay \
+    SettingsProviderBerylliumOverlay \
+    SystemUIBerylliumOverlay \
+    WifiResourcesBerylliumOverlay
 
 # Screen density
 PRODUCT_AAPT_CONFIG := normal
@@ -90,7 +91,3 @@ PRODUCT_COPY_FILES += \
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
     $(LOCAL_PATH)
-
-# WiFi
-PRODUCT_PACKAGES += \
-    TargetWifiOverlay
