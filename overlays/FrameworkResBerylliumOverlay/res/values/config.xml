@@ -26,7 +26,7 @@
     <bool name="config_automatic_brightness_available">true</bool>
 
     <!-- Whether the display blanks itself when transitioning from a doze to a non-doze state -->
-    <bool name="config_displayBlanksAfterDoze">false</bool>
+    <bool name="config_displayBlanksAfterDoze">true</bool>
 
     <!-- Whether to enable network location overlay which allows network
          location provider to be replaced by an app at run-time. When disabled,
@@ -62,10 +62,6 @@
          hysteresis threshold. -->
     <integer name="config_autoBrightnessBrighteningLightDebounce">2000</integer>
     <integer name="config_autoBrightnessDarkeningLightDebounce">4000</integer>
-
-    <!-- Default screen brightness setting.
-         Must be in the range specified by minimum and maximum. -->
-    <integer name="config_screenBrightnessSettingDefault">128</integer>
 
     <!-- Screen brightness used to dim the screen when the user activity
          timeout expires.  May be less than the minimum allowed brightness setting
@@ -137,10 +133,6 @@
         <item>348.05453</item>  <!-- 2981-5000 -->
         <item>389.70</item>     <!-- 5000+ -->
     </array>
-
-    <!-- Minimum screen brightness setting allowed by the power manager.
-         The user is forbidden from setting the brightness below this level. -->
-    <integer name="config_screenBrightnessSettingMinimum">1</integer>
 
     <!-- An array describing the screen's backlight values corresponding to the brightness
          values in the config_screenBrightnessNits array.
@@ -669,6 +661,20 @@
         <item>420</item>
     </array>
 
+    <!-- Minimum screen brightness setting allowed by power manager.          
+         The user is forbidden from setting the brightness below this level.
+         Equivalent to 1/255. -->
+    <item name="config_screenBrightnessSettingMinimumFloat" format="float" type="dimen">0.0</item>
+
+    <!-- Maximum screen brightness allowed by the power manager.
+         The user is forbidden from setting the brightness above this level.  -->     
+    <item name="config_screenBrightnessSettingMaximumFloat" format="float" type="dimen">1.0</item>
+
+    <!-- Default screen brightness setting
+         Must be in the range specified by minimum and maximum.
+         Equivalent to 128/255 (default for this device)    -->
+    <item name="config_screenBrightnessSettingDefaultFloat" format="float" type="dimen">0.5</item>
+
     <!-- The bounding path of the cutout region of the main built-in display.
          Must either be empty if there is no cutout region, or a string that is parsable by
          {@link android.util.PathParser}.
@@ -686,8 +692,12 @@
          -->
     <string translatable="false" name="config_mainBuiltInDisplayCutout">M -270,0 L -270,86 L 270,86 L 270,0 Z</string>
 
-    <!-- Height of the status bar -->
-    <dimen name="status_bar_height_portrait">86.0px</dimen>
-    <dimen name="status_bar_height_landscape">24.0dp</dimen>
-    <dimen name="rounded_corner_radius_top">104px</dimen>
+    <!-- Default value for proximity check on screen wake
+     NOTE ! - Enable for devices that have a fast response proximity sensor (ideally < 300ms)-->
+    <bool name="config_proximityCheckOnWake">true</bool>
+    <integer name="config_proximityCheckTimeout">100</integer>
+    <bool name="config_proximityCheckOnWakeEnabledByDefault">true</bool>
+    
+    <!-- Auto-brightness sensor type string -->
+    <string name="config_displayLightSensorType">"android.sensor.light"</string>
 </resources>
